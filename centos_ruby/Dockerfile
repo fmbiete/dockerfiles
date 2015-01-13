@@ -9,7 +9,7 @@ RUN yum clean all
 WORKDIR cd /usr/local/src
 
 RUN echo 'export RBENV_ROOT="/usr/local/src/rbenv' > /etc/profile.d/rbenv.sh \
-&& echo 'export PATH="$RBENV_ROOT/bin:$PATH"' >> /etc/profile.d/rbenv.sh
+&& echo 'export PATH="$RBENV_ROOT/bin:$PATH"' >> /etc/profile.d/rbenv.sh \
 && echo 'eval "$(rbenv init -)"' >> /etc/profile.d/rbenv.sh
 RUN git clone git://github.com/sstephenson/rbenv.git \
 && git clone git://github.com/sstephenson/ruby-build.git rbenv/plugins/ruby-build
