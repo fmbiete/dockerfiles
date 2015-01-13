@@ -6,7 +6,7 @@ RUN yum clean all && yum install -y tar bzip2 yum-utils deltarpm nodejs ImageMag
 RUN yum clean all && yum-builddep -y ruby
 RUN yum clean all
 
-WORKDIR cd /usr/local/src
+WORKDIR /usr/local/src
 
 RUN echo 'export RBENV_ROOT="/usr/local/src/rbenv"' > /etc/profile.d/rbenv.sh \
 && echo 'export PATH="$RBENV_ROOT/bin:$PATH"' >> /etc/profile.d/rbenv.sh \
