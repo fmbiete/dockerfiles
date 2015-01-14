@@ -22,7 +22,8 @@ gcc-c++ \
 make \
 git \
 patch \
-rrdtool-devel
+rrdtool-devel \
+mariadb-devel
 
 RUN yum clean all \
 && yum-builddep -y ruby
