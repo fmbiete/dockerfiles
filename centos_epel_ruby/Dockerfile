@@ -54,7 +54,7 @@ RUN echo 'gem: --no-rdoc --no-ri' >> "$HOME/.gemrc"
 
 # install things globally, for great justice
 ENV GEM_HOME /usr/local/bundle
-ENV PATH $GEM_HOME/bin:$PATH
+ENV PATH $GEM_HOME/bin:/usr/lib64/qt4/bin:$PATH
 
 RUN gem install bundler \
 && bundle config --global path "$GEM_HOME" \
