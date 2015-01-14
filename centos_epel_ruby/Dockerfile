@@ -36,7 +36,7 @@ readline-devel \
 systemtap-sdt-devel \
 tk-devel \
 curl \
-&& yum clean all \
+&& yum clean all
 
 # Compile ruby
 RUN mkdir -p /usr/src/ruby \
