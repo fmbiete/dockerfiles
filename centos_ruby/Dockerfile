@@ -23,7 +23,8 @@ make \
 git \
 patch \
 rrdtool-devel \
-mariadb-devel
+mariadb-devel \
+sqlite-devel
 
 RUN yum clean all \
 && yum-builddep -y ruby
