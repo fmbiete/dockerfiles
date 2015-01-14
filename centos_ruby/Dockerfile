@@ -1,18 +1,40 @@
 FROM centos:7
 MAINTAINER Francisco Miguel Biete <fbiete@gmail.com>
 
-RUN yum install -y http://mirror.uv.es/mirror/fedora-epel/7/x86_64/e/epel-release-7-5.noarch.rpm
-RUN yum clean all && yum install -y tar bzip2 yum-utils deltarpm nodejs ImageMagick qt qt-devel qtwebkit qtwebkit-devel xorg-x11-server-Xvfb openldap-devel gcc gcc-c++ make git
-RUN yum clean all && yum-builddep -y ruby
-RUN yum clean all
+RUN yum install -y \
+http://mirror.uv.es/mirror/fedora-epel/7/x86_64/e/epel-release-7-5.noarch.rpm
+
+RUN yum clean all \
+&& yum install -y \
+tar \
+bzip2 \
+yum-utils \
+nodejs \
+ImageMagick \
+qt \
+qt-devel \
+qtwebkit \
+qtwebkit-devel \
+xorg-x11-server-Xvfb \
+openldap-devel \
+gcc \
+gcc-c++ \
+make \
+git \
+patch
+
+RUN yum clean all \
+&& yum-builddep -y ruby
 
 WORKDIR /usr/local/src
 
 RUN echo 'export RBENV_ROOT="/usr/local/src/rbenv"' > /etc/profile.d/rbenv.sh \
 && echo 'export PATH="$RBENV_ROOT/bin:$PATH"' >> /etc/profile.d/rbenv.sh \
 && echo 'eval "$(rbenv init -)"' >> /etc/profile.d/rbenv.sh
+
 RUN git clone git://github.com/sstephenson/rbenv.git \
 && git clone git://github.com/sstephenson/ruby-build.git rbenv/plugins/ruby-build
+
 RUN source /etc/profile.d/rbenv.sh \
 && export MAKE_OPTS="-j$(nproc)" \
 && export CONFIGURE_OPTS="--disable-install-doc" \
