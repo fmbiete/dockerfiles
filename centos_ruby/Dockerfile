@@ -21,7 +21,8 @@ gcc \
 gcc-c++ \
 make \
 git \
-patch
+patch \
+rrdtool-devel
 
 RUN yum clean all \
 && yum-builddep -y ruby
