@@ -29,7 +29,7 @@ RUN yum clean all \
 WORKDIR /usr/local/src
 
 RUN echo 'export RBENV_ROOT="/usr/local/src/rbenv"' > /etc/profile.d/rbenv.sh \
-&& echo 'export PATH="$RBENV_ROOT/bin:$PATH"' >> /etc/profile.d/rbenv.sh \
+&& echo 'export PATH="$RBENV_ROOT/bin:/usr/lib64/qt4/bin:$PATH"' >> /etc/profile.d/rbenv.sh \
 && echo 'eval "$(rbenv init -)"' >> /etc/profile.d/rbenv.sh
 
 RUN git clone git://github.com/sstephenson/rbenv.git \
