@@ -18,4 +18,4 @@ ENTRYPOINT ["/docker-entrypoint.sh"]
 
 CMD ["slapd", "-h", "ldap:/// ldapi:///", \
 "-u", "ldap", "-g", "ldap", \
-"-F", "/etc/openldap/slapd.d", "-d", "0"]
+"-F", "/etc/openldap/slapd.d", "-d", "1"]
