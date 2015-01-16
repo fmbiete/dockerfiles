@@ -5,8 +5,6 @@ RUN yum install -y \
 epel-release \
 && yum clean all
 
-RUN locale-gen es_ES.UTF-8 
-
-ENV LANG es_ES.UTF-8  
-ENV LANGUAGE es_ES.UTF-8
-ENV LC_ALL es_ES.UTF-8
+ENV LANG en_US.UTF-8  
+ENV LANGUAGE en_US.UTF-8
+ENV LC_ALL en_US.UTF-8
