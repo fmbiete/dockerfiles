@@ -1,8 +1,17 @@
-Base: centos_epel:7
+Base: centos_epel_php:5.6
 
 Extras:
 
     - PHP-FPM 5.6 (REMI Version)
+
+
+Volumes:
+
+    - /var/www
+
+Expose:
+
+    - 9000
 
 
 RUN EXAMPLE:
