@@ -58,8 +58,7 @@ ENV PATH $GEM_HOME/bin:/usr/lib64/qt4/bin:$PATH
 
 RUN gem install bundler \
 && bundle config --global path "$GEM_HOME" \
-&& bundle config --global bin "$GEM_HOME/bin" \
-&& bundle config --global jobs "$(nproc)"
+&& bundle config --global bin "$GEM_HOME/bin"
 
 # don't create ".bundle" in all our apps
 ENV BUNDLE_APP_CONFIG $GEM_HOME
