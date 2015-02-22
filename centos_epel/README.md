@@ -1,4 +1,4 @@
-Base: Centos 7
+Base: Centos 6
 
 Extra:
 

@@ -1,4 +1,4 @@
-FROM centos:7
+FROM centos:6
 MAINTAINER Francisco Miguel Biete <fbiete@gmail.com>
 
 RUN yum install -y \
