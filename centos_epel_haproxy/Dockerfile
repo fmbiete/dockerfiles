@@ -26,6 +26,6 @@ all install-bin \
 && yum -y history undo `yum history list | head -n 4 | tail -n 1 | awk '{print $1}'` \
 && yum clean all
 
-EXPOSE [ 80 443 ]
+EXPOSE 80 443
 
 CMD ["haproxy", "-f", "/usr/local/etc/haproxy/haproxy.cfg"]
