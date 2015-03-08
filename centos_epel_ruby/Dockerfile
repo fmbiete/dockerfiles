@@ -3,7 +3,7 @@ MAINTAINER Francisco Miguel Biete <fbiete@gmail.com>
 
 # Define versions
 ENV RUBY_MAJOR 2.2
-ENV RUBY_VERSION 2.2.0
+ENV RUBY_VERSION 2.2.1
 
 # Prepare system
 RUN yum install -y \
