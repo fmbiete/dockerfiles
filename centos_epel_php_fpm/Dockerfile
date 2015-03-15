@@ -14,4 +14,4 @@ VOLUME ["/var/www"]
 
 EXPOSE 9000
 
-ENTRYPOINT ["php-fpm","-F"]
+CMD ["php-fpm", "-F"]
