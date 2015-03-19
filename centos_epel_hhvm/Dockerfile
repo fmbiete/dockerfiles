@@ -2,6 +2,9 @@ FROM fbiete/centos_epel:7
 MAINTAINER Francisco Miguel Biete <fbiete@gmail.com>
 
 RUN yum clean all \
+&& yum install -y http://rpms.famillecollet.com/enterprise/remi-release-7.rpm \
+&& yum install --enablerepo=remi -y \
+ImageMagick-last-devel \
 && yum install -y \
 make \
 cpp \
@@ -9,10 +12,12 @@ gcc-c++ \
 cmake \
 git \
 psmisc \
+mariadb-server \
 {binutils,boost,jemalloc}-devel \
-{sqlite,tbb,bzip2,openldap,readline,elfutils-libelf,gmp,lz4,pcre}-devel \
-lib{xslt,event,yaml,vpx,png,zip,icu,mcrypt,memcached,cap,dwarf,iconv}-devel \
-{unixODBC,expat,mariadb}-devel lib{edit,curl,xml2,xslt}-devel \
+{sqlite,tbb,bzip2,openldap,readline,elfutils-libelf,gmp,lz4,pcre,freetype,fastlz}-devel \
+lib{xslt,event,yaml,vpx,png,zip,icu,mcrypt,memcached,cap,dwarf,jpeg-turbo}-devel \
+{unixODBC,expat,mariadb}-devel \
+lib{edit,curl,xml2,xslt}-devel \
 glog-devel \
 oniguruma-devel \
 ocaml \
@@ -28,20 +33,8 @@ RUN cd /usr/local/src \
 && ./hphp/hhvm/hhvm --version \
 && make install \
 && cd /usr/local/src \
-&& rm -rf hhvm
-
-RUN yum remove -y \
-make \
-cpp \
-gcc-c++ \
-cmake \
-git \
-{binutils,boost,jemalloc}-devel \
-{sqlite,tbb,bzip2,openldap,readline,elfutils-libelf,gmp,lz4,pcre}-devel \
-lib{xslt,event,yaml,vpx,png,zip,icu,mcrypt,memcached,cap,dwarf,iconv}-devel \
-{unixODBC,expat,mariadb}-devel lib{edit,curl,xml2,xslt}-devel \
-glog-devel \
-oniguruma-devel \
+&& rm -rf hhvm \
+&& yum remove mariadb-server \
 && yum clean all
 
 EXPOSE 9000
