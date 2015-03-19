@@ -17,7 +17,7 @@ oniguruma-devel \
 ocaml \
 && yum clean all
 
-ENV HHVM_VERSION "HHVM-3.6"
+ENV HHVM_VERSION HHVM-3.6
 
 RUN cd /usr/local/src \
 && git clone https://github.com/facebook/hhvm -b $HHVM_VERSION hhvm --recursive \
@@ -28,6 +28,19 @@ RUN cd /usr/local/src \
 && make install \
 && cd /usr/local/src \
 && rm -rf hhvm
+
+RUN yum remove -y \
+cpp \
+gcc-c++ \
+cmake \
+git \
+{binutils,boost,jemalloc}-devel \
+{sqlite,tbb,bzip2,openldap,readline,elfutils-libelf,gmp,lz4,pcre}-devel \
+lib{xslt,event,yaml,vpx,png,zip,icu,mcrypt,memcached,cap,dwarf}-devel \
+{unixODBC,expat,mariadb}-devel lib{edit,curl,xml2,xslt}-devel \
+glog-devel \
+oniguruma-devel \
+&& yum clean all
 
 EXPOSE 9000
 
