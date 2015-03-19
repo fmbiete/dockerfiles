@@ -15,7 +15,7 @@ lib{xslt,event,yaml,vpx,png,zip,icu,mcrypt,memcached,cap,dwarf}-devel \
 glog-devel \
 oniguruma-devel \
 ocaml \
-&& yum clean all \
+&& yum clean all
 
 ENV HHVM_VERSION "HHVM-3.6"
 
