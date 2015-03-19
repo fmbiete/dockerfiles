@@ -3,6 +3,7 @@ MAINTAINER Francisco Miguel Biete <fbiete@gmail.com>
 
 RUN yum clean all \
 && yum install -y \
+make \
 cpp \
 gcc-c++ \
 cmake \
@@ -30,6 +31,7 @@ RUN cd /usr/local/src \
 && rm -rf hhvm
 
 RUN yum remove -y \
+make \
 cpp \
 gcc-c++ \
 cmake \
