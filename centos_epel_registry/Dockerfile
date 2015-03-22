@@ -42,7 +42,6 @@ openssl-devel \
 && pip install /docker-registry-install/depends/docker-registry-core \
 && pip install file:///docker-registry-install/#egg=docker-registry[bugsnag,newrelic,cors] \
 && rm -rf /docker-registry-install \
-&& mkdir /docker-registry \
 && yum remove -y \
 python-devel \
 unzip \
