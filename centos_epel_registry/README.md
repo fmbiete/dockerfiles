@@ -26,7 +26,7 @@ Remember to put a config.yml in ~/app/docker/registry
         search_backend: sqlalchemy
         sqlalchemy_index_database: sqlite:////docker-registry/search-docker-registry.db
 
-    prod:
+    local:
         <<: *common
         loglevel: warn
         storage: local
@@ -34,14 +34,3 @@ Remember to put a config.yml in ~/app/docker/registry
         smtp_host: smtp.example.com
         from_addr: docker@example.com
         to_addr: alerts@example.com
-
-    dev:
-        <<: *common
-        loglevel: debug
-        storage: local
-        storage_path: /docker-registry/data-dev
-
-    test:
-        <<: *common
-        storage: local
-        storage_path: /docker-registry/data-tmp
