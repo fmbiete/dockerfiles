@@ -1,7 +1,8 @@
 FROM fbiete/centos_epel:7
 MAINTAINER Francisco Miguel Biete <fbiete@gmail.com>
 
-ENV HHVM_VERSION HHVM-3.6
+ENV HHVM_BRANCH HHVM-3.6
+ENV HHVM_VERSION HHVM-3.6.1
 
 RUN yum clean all \
 && yum install -y http://rpms.famillecollet.com/enterprise/remi-release-7.rpm \
@@ -25,8 +26,9 @@ oniguruma-devel \
 ocaml \
 && yum clean all \
 && cd /usr/local/src \
-&& git clone https://github.com/facebook/hhvm -b $HHVM_VERSION hhvm --recursive \
+&& git clone https://github.com/facebook/hhvm -b $HHVM_BRANCH hhvm --recursive \
 && cd hhvm \
+&& git checkout tags/$HHVM_VERSION \
 && cmake . -DMYSQL_UNIX_SOCK_ADDR=/var/run/mysqld/mysqld.sock \
 && make -j"$(nproc)" \
 && ./hphp/hhvm/hhvm --version \
