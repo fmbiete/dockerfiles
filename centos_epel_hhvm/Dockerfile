@@ -1,8 +1,11 @@
 FROM fbiete/centos_epel:7
 MAINTAINER Francisco Miguel Biete <fbiete@gmail.com>
 
+ENV HHVM_VERSION HHVM-3.6
+
 RUN yum clean all \
 && yum install -y http://rpms.famillecollet.com/enterprise/remi-release-7.rpm \
+&& yum clean all \
 && yum install --enablerepo=remi -y \
 ImageMagick-last-devel \
 && yum install -y \
@@ -12,29 +15,33 @@ gcc-c++ \
 cmake \
 git \
 psmisc \
-mariadb-server \
 {binutils,boost,jemalloc}-devel \
-{sqlite,tbb,bzip2,openldap,readline,elfutils-libelf,gmp,lz4,pcre,freetype,fastlz}-devel \
+{sqlite,tbb,bzip2,openldap,readline,elfutils-libelf,gmp,lz4,pcre,freetype,fastlz,openssl,ncurses,xz,cyrus-sasl,glibc,inotify-tools}-devel \
 lib{xslt,event,yaml,vpx,png,zip,icu,mcrypt,memcached,cap,dwarf,jpeg-turbo}-devel \
 {unixODBC,expat,mariadb}-devel \
 lib{edit,curl,xml2,xslt}-devel \
 glog-devel \
 oniguruma-devel \
 ocaml \
-&& yum clean all
-
-ENV HHVM_VERSION HHVM-3.6
-
-RUN cd /usr/local/src \
+&& yum clean all \
+&& cd /usr/local/src \
 && git clone https://github.com/facebook/hhvm -b $HHVM_VERSION hhvm --recursive \
 && cd hhvm \
-&& cmake . \
+&& cmake . -DMYSQL_UNIX_SOCK_ADDR=/var/run/mysqld/mysqld.sock \
 && make -j"$(nproc)" \
 && ./hphp/hhvm/hhvm --version \
 && make install \
 && cd /usr/local/src \
 && rm -rf hhvm \
-&& yum remove mariadb-server \
+&& yum remove -y \
+*-devel \
+make \
+cpp \
+gcc-c++ \
+cmake \
+git \
+psmisc \
+glibc-headers \
 && yum clean all
 
 EXPOSE 9000
