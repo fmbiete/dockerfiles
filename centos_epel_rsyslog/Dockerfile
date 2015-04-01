@@ -15,4 +15,4 @@ logrotate \
 && rm -f /etc/logrotate.d/*
 
 COPY config/logrotate.conf /etc/logrotate.conf
-COPY config/00_enable_server.conf /etc/logrotate.d/
+COPY config/00_enable_server.conf /etc/logrotate.d/enable_server.conf
