@@ -1,7 +1,7 @@
 FROM fbiete/centos_epel:7
 MAINTAINER Francisco Miguel Biete <fbiete@gmail.com>
 
-VOLUME [ "/etc/rsyslog.d", "/var/log" ]
+VOLUME [ "/etc/logrotate.docker", "/etc/rsyslog.d", "/var/log" ]
 
 EXPOSE 514 514/udp
 
@@ -11,4 +11,5 @@ RUN yum clean all \
 && yum install -y \
 rsyslog \
 logrotate \
-&& yum clean all
+&& yum clean all \
+&& echo "include /etc/logrotate.docker" >> /etc/logrotate.conf

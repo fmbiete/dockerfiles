@@ -13,3 +13,9 @@ Instructions:
 
 - Add a new config file filtering by tag in the config folder and restart app_rsyslog.
 
+- Add a new logrotate file
+
+- Execute logrotate when desired
+
+    docker exec app_rsyslog /usr/sbin/logrotate /etc/logrotate.conf
+
