@@ -12,4 +12,7 @@ RUN yum clean all \
 rsyslog \
 logrotate \
 && yum clean all \
-&& echo "include /etc/logrotate.docker" >> /etc/logrotate.conf
+&& rm -f /etc/logrotate.d/*
+
+COPY config/logrotate.conf /etc/logrotate.conf
+COPY config/00_enable_server.conf /etc/logrotate.d/
