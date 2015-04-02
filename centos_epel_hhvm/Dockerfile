@@ -19,7 +19,7 @@ psmisc \
 {binutils,boost,jemalloc}-devel \
 {sqlite,tbb,bzip2,openldap,readline,elfutils-libelf,gmp,lz4,pcre,freetype,fastlz,openssl,ncurses,xz,cyrus-sasl,glibc,inotify-tools}-devel \
 lib{xslt,event,yaml,vpx,png,zip,icu,mcrypt,memcached,cap,dwarf,jpeg-turbo}-devel \
-{unixODBC,expat,mariadb}-devel \
+{unixODBC,expat,mariadb,uw-imap}-devel \
 lib{edit,curl,xml2,xslt}-devel \
 glog-devel \
 oniguruma-devel \
@@ -44,8 +44,13 @@ cmake \
 git \
 psmisc \
 glibc-headers \
-&& yum clean all
+&& yum clean all \
+&& mkdir /var/run/hhvm /var/log/hhvm /etc/hhvm
 
 EXPOSE 9000
 
-CMD [ "/usr/local/bin/hhvm", "--config", "/etc/hhvm/server.hdf", "-vServer.Type=fastcgi", "-vServer.Port=9000" ]
+COPY php.ini /etc/php.ini
+COPY server.ini /etc/hhvm/server.ini
+COPY docker-run.sh /docker-run.sh
+
+CMD [ "/docker-run.sh" ]
