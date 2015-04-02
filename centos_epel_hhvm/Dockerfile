@@ -49,7 +49,6 @@ glibc-headers \
 
 EXPOSE 9000
 
-COPY php.ini /etc/php.ini
 COPY server.ini /etc/hhvm/server.ini
 COPY docker-run.sh /docker-run.sh
 
