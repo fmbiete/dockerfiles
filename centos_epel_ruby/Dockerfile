@@ -51,7 +51,7 @@ RUN mkdir -p /usr/src/ruby \
 && make install \
 && cd \
 && rm -rf /usr/src/ruby \
-&& mkdir -p /usr/src/rubygem
+&& mkdir -p /usr/src/rubygem \
 && curl -LS http://production.cf.rubygems.org/rubygems/rubygems-$RUBYGEM_VERSION.tgz | tar xzC /usr/src/rubygem --strip-components=1 \
 && cd /usr/src/rubygem \
 && ruby setup.rb \
