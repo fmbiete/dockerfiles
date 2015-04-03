@@ -2,8 +2,8 @@ FROM fbiete/centos_epel:7
 MAINTAINER Francisco Miguel Biete <fbiete@gmail.com>
 
 # Define versions
-ENV RUBY_MAJOR 2.2
-ENV RUBY_VERSION 2.2.1
+ENV RUBY_MAJOR 1.8
+ENV RUBY_VERSION 1.8.7-p374
 
 # Prepare system
 RUN yum install -y \
