@@ -4,6 +4,7 @@ MAINTAINER Francisco Miguel Biete <fbiete@gmail.com>
 # Define versions
 ENV RUBY_MAJOR 1.8
 ENV RUBY_VERSION 1.8.7-p374
+ENV RUBYGEM_VERSION 1.6.2
 
 # Prepare system
 RUN yum clean all \
@@ -48,7 +49,13 @@ RUN mkdir -p /usr/src/ruby \
 && ./configure --disable-install-doc \
 && make -j"$(nproc)" \
 && make install \
-&& rm -rf /usr/src/ruby
+&& cd \
+&& rm -rf /usr/src/ruby \
+&& mkdir -p /usr/src/rubygem
+&& curl -LS http://production.cf.rubygems.org/rubygems/rubygems-$RUBYGEM_VERSION.tgz | tar xzC /usr/src/rubygem --strip-components=1 \
+&& cd /usr/src/rubygem \
+&& ruby setup.rb \
+&& rm -rf /usr/src/rubygem
 
 # skip installing gem documentation
 RUN echo 'gem: --no-rdoc --no-ri' >> "$HOME/.gemrc"
