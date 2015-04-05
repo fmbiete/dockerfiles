@@ -1,4 +1,4 @@
-FROM fbiete/centos_epel_nginx:1.6
+FROM fbiete/centos_epel_nginx:1.7
 MAINTAINER Francisco Miguel Biete <fbiete@gmail.com>
 
 EXPOSE 80 443
