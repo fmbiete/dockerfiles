@@ -6,7 +6,7 @@ RUN mkdir /var/www/davical \
 && groupadd -g 1000 davical \
 && adduser davical --gid 1000 -u 1000 --home /home/davical --shell /bin/bash \
 && curl -LS https://gitlab.com/davical-project/awl/repository/archive.tar.gz | tar xz \
-&& echo "include_path=.:/usr/share/pear:/usr/share/php:/usr/local/src/awl.git/inc" >> /etc/php.ini \
+&& echo "include_path=.:/usr/share/pear:/usr/share/php:/usr/local/src/awl.git/inc:/var/www/davical/inc" >> /etc/php.ini \
 && curl -LS https://gitlab.com/davical-project/davical/repository/archive.tar.gz | tar xz -C /var/www/davical --strip-components=1 \
 && chown -R davical:davical /var/log/php-fpm /var/run/php-fpm
 
