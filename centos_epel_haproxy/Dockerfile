@@ -5,7 +5,8 @@ ENV HAPROXY_MAJOR 1.5
 ENV HAPROXY_VERSION 1.5.11
 ENV HAPROXY_MD5 5500a79d0d2b238d4a1e9749bd0c2cb2
 
-RUN yum install -y \
+RUN yum clean all\
+&& yum install -y \
 gcc \
 make \
 openssl-devel \
@@ -23,7 +24,7 @@ all install-bin \
 && mkdir /usr/local/etc/haproxy \
 && cp -R /usr/local/src/haproxy/examples/errorfiles /usr/local/etc/haproxy/errors \
 && rm -rf /usr/local/src/haproxy \
-&& yum -y history undo `yum history list | head -n 4 | tail -n 1 | awk '{print $1}'` \
+&& yum -y history undo last \
 && yum clean all
 
 EXPOSE 80 443
