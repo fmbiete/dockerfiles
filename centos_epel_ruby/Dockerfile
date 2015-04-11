@@ -5,10 +5,15 @@ MAINTAINER Francisco Miguel Biete <fbiete@gmail.com>
 ENV RUBY_MAJOR 2.2
 ENV RUBY_VERSION 2.2.1
 
+# install things globally, for great justice
+ENV GEM_HOME /usr/local/bundle
+ENV PATH $GEM_HOME/bin:/usr/lib64/qt4/bin:$PATH
+# don't create ".bundle" in all our apps
+ENV BUNDLE_APP_CONFIG $GEM_HOME
+
 # Prepare system
 RUN yum clean all \
 && yum install -y \
-tar \
 bzip2 \
 nodejs \
 ImageMagick \
@@ -40,28 +45,19 @@ curl \
 && yum clean all
 
 # Compile ruby
-RUN mkdir -p /usr/src/ruby \
-&& curl -SL "http://cache.ruby-lang.org/pub/ruby/$RUBY_MAJOR/ruby-$RUBY_VERSION.tar.bz2" \
-| tar -xjC /usr/src/ruby --strip-components=1 \
-&& cd /usr/src/ruby \
+#   skip installing gem documentation
+RUN mkdir -p /usr/local/src/ruby \
+&& curl -SL "http://cache.ruby-lang.org/pub/ruby/$RUBY_MAJOR/ruby-$RUBY_VERSION.tar.bz2" | tar -xjC /usr/local/src/ruby --strip-components=1 \
+&& cd /usr/local/src/ruby \
 && autoconf \
 && ./configure --disable-install-doc \
 && make -j"$(nproc)" \
 && make install \
-&& rm -rf /usr/src/ruby
-
-# skip installing gem documentation
-RUN echo 'gem: --no-rdoc --no-ri' >> "$HOME/.gemrc"
-
-# install things globally, for great justice
-ENV GEM_HOME /usr/local/bundle
-ENV PATH $GEM_HOME/bin:/usr/lib64/qt4/bin:$PATH
-
-RUN gem install bundler \
+&& rm -rf /usr/local/src/ruby \
+&& echo 'gem: --no-rdoc --no-ri' >> "$HOME/.gemrc" \
+&& gem install bundler \
 && bundle config --global path "$GEM_HOME" \
 && bundle config --global bin "$GEM_HOME/bin"
 
-# don't create ".bundle" in all our apps
-ENV BUNDLE_APP_CONFIG $GEM_HOME
 
 CMD [ "irb" ]

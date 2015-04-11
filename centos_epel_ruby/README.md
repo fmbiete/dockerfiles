@@ -1,6 +1,6 @@
-Base: centos_epel:7
+**Base:** centos_epel:7
 
-Extra:
+**Extra:**
 
     - Ruby
     - MariaDB & SQLite3 support
