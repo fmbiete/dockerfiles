@@ -43,10 +43,12 @@ ncurses-devel \
 readline-devel \
 systemtap-sdt-devel \
 tk-devel \
+openssl-devel \
 && yum clean all \
 && mkdir -p /usr/local/src/ruby \
 && curl -SL "http://cache.ruby-lang.org/pub/ruby/$RUBY_MAJOR/ruby-$RUBY_VERSION.tar.bz2" | tar -xjC /usr/local/src/ruby --strip-components=1 \
 && cd /usr/local/src/ruby \
+&& curl -fsSL "https://github.com/ruby/ruby/commit/0d58bb55985e787364b0235e5e69278d0f0ad4b0.patch" | patch -p1 -f \
 && autoconf \
 && ./configure --disable-install-doc \
 && make -j"$(nproc)" \
