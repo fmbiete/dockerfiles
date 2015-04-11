@@ -12,6 +12,8 @@ ENV PATH $GEM_HOME/bin:/usr/lib64/qt4/bin:$PATH
 ENV BUNDLE_APP_CONFIG $GEM_HOME
 
 # Prepare system
+# Compile ruby
+#   skip installing gem documentation
 RUN yum clean all \
 && yum install -y \
 bzip2 \
@@ -41,17 +43,15 @@ readline-devel \
 systemtap-sdt-devel \
 tk-devel \
 openssl-devel \
-&& yum clean all
-
-# Compile ruby
-#   skip installing gem documentation
-RUN mkdir -p /usr/local/src/ruby \
+&& yum clean all \
+&& mkdir -p /usr/local/src/ruby \
 && curl -SL "http://cache.ruby-lang.org/pub/ruby/$RUBY_MAJOR/ruby-$RUBY_VERSION.tar.bz2" | tar -xjC /usr/local/src/ruby --strip-components=1 \
 && cd /usr/local/src/ruby \
 && autoconf \
 && ./configure --disable-install-doc \
 && make -j"$(nproc)" \
 && make install \
+&& cd \
 && rm -rf /usr/local/src/ruby \
 && echo 'gem: --no-rdoc --no-ri' >> "$HOME/.gemrc" \
 && gem install bundler \
