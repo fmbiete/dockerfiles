@@ -27,7 +27,6 @@ bison \
 gcc \
 gcc-c++ \
 make \
-git \
 patch \
 rrdtool-devel \
 mariadb-devel \
@@ -41,7 +40,7 @@ ncurses-devel \
 readline-devel \
 systemtap-sdt-devel \
 tk-devel \
-curl \
+openssl-devel \
 && yum clean all
 
 # Compile ruby
