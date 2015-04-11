@@ -43,7 +43,6 @@ ncurses-devel \
 readline-devel \
 systemtap-sdt-devel \
 tk-devel \
-openssl-devel \
 && yum clean all \
 && mkdir -p /usr/local/src/ruby \
 && curl -SL "http://cache.ruby-lang.org/pub/ruby/$RUBY_MAJOR/ruby-$RUBY_VERSION.tar.bz2" | tar -xjC /usr/local/src/ruby --strip-components=1 \
