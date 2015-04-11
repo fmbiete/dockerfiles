@@ -6,10 +6,17 @@ ENV RUBY_MAJOR 1.8
 ENV RUBY_VERSION 1.8.7-p374
 ENV RUBYGEM_VERSION 1.6.2
 
+# install things globally, for great justice
+ENV GEM_HOME /usr/local/bundle
+ENV PATH $GEM_HOME/bin:/usr/lib64/qt4/bin:$PATH
+# don't create ".bundle" in all our apps
+ENV BUNDLE_APP_CONFIG $GEM_HOME
+
 # Prepare system
+# Compile ruby
+#   skip installing gem documentation
 RUN yum clean all \
 && yum install -y \
-tar \
 bzip2 \
 nodejs \
 ImageMagick \
@@ -23,7 +30,6 @@ bison \
 gcc \
 gcc-c++ \
 make \
-git \
 patch \
 rrdtool-devel \
 mariadb-devel \
@@ -37,38 +43,27 @@ ncurses-devel \
 readline-devel \
 systemtap-sdt-devel \
 tk-devel \
-curl \
-&& yum clean all
-
-# Compile ruby
-RUN mkdir -p /usr/src/ruby \
-&& curl -SL "http://cache.ruby-lang.org/pub/ruby/$RUBY_MAJOR/ruby-$RUBY_VERSION.tar.bz2" \
-| tar -xjC /usr/src/ruby --strip-components=1 \
-&& cd /usr/src/ruby \
+openssl-devel \
+&& yum clean all \
+&& mkdir -p /usr/local/src/ruby \
+&& curl -SL "http://cache.ruby-lang.org/pub/ruby/$RUBY_MAJOR/ruby-$RUBY_VERSION.tar.bz2" | tar -xjC /usr/local/src/ruby --strip-components=1 \
+&& cd /usr/local/src/ruby \
 && autoconf \
 && ./configure --disable-install-doc \
 && make -j"$(nproc)" \
 && make install \
 && cd \
-&& rm -rf /usr/src/ruby \
-&& mkdir -p /usr/src/rubygem \
-&& curl -LS http://production.cf.rubygems.org/rubygems/rubygems-$RUBYGEM_VERSION.tgz | tar xzC /usr/src/rubygem --strip-components=1 \
-&& cd /usr/src/rubygem \
+&& rm -rf /usr/local/src/ruby \
+&& echo 'gem: --no-rdoc --no-ri' >> "$HOME/.gemrc" \
+&& mkdir -p /usr/local/src/rubygem \
+&& curl -LS http://production.cf.rubygems.org/rubygems/rubygems-$RUBYGEM_VERSION.tgz | tar -xzC /usr/local/src/rubygem --strip-components=1 \
+&& cd /usr/local/src/rubygem \
 && ruby setup.rb \
-&& rm -rf /usr/src/rubygem
-
-# skip installing gem documentation
-RUN echo 'gem: --no-rdoc --no-ri' >> "$HOME/.gemrc"
-
-# install things globally, for great justice
-ENV GEM_HOME /usr/local/bundle
-ENV PATH $GEM_HOME/bin:/usr/lib64/qt4/bin:$PATH
-
-RUN gem install bundler \
+&& cd \
+&& rm -rf /usr/local/src/rubygem
+&& gem install bundler \
 && bundle config --global path "$GEM_HOME" \
 && bundle config --global bin "$GEM_HOME/bin"
 
-# don't create ".bundle" in all our apps
-ENV BUNDLE_APP_CONFIG $GEM_HOME
 
 CMD [ "irb" ]
