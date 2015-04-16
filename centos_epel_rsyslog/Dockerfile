@@ -10,9 +10,7 @@ CMD [ "/usr/sbin/rsyslogd", "-n" ]
 RUN yum clean all \
 && yum install -y \
 rsyslog \
-logrotate \
-&& yum clean all \
-&& rm -f /etc/logrotate.d/*
+&& yum clean all
 
 COPY config/logrotate.conf /etc/logrotate.conf
-COPY config/00_enable_server.conf /etc/logrotate.d/enable_server.conf
+COPY config/00_enable_server.conf /etc/rsyslog.d/enable_server.conf

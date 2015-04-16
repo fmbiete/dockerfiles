@@ -1,4 +1,4 @@
-FROM fbiete/centos_epel_nginx:1.6
+FROM fbiete/centos_epel_nginx:1.7
 MAINTAINER Francisco Miguel Biete <fbiete@gmail.com>
 
 EXPOSE 80 443
@@ -24,7 +24,7 @@ git \
 && cp -r dist/* /var/www/docker-registry-frontend \
 && cd / \
 && rm -rf /docker-registry-frontend-master \
-&& yum -y history undo `yum history list | head -n 4 | tail -n 1 | awk '{print $1}'` \
+&& yum -y history undo last
 && yum clean all
 
 COPY nginx.conf /etc/nginx/nginx.conf

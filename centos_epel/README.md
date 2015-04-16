@@ -5,6 +5,7 @@
     - EPEL
     - tar
     - gosu
+    - logrotate
     - en_US.UTF-8 locale
 
 

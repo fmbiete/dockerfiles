@@ -1,16 +1,18 @@
-Base: centos_epel_nginx:1.6
+**Base:** centos_epel_nginx:1.7
 
-Extra:
+**Extra:**
 
     - Docker Registry Frontend
 
 
+**Notes:**
+
 Based on https://registry.hub.docker.com/u/konradkleine/docker-registry-frontend/
 
 
-Usage:
+**Usage:**
 
-    Run fbiete/centos_epel_registry as app_registry
+Run fbiete/centos_epel_registry as app_registry
 
     docker run --name app_registry_frontend -p 80:80 --link app_registry:docker-registry -d fbiete/centos_epel_registry_frontend:lastest
 
