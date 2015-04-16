@@ -12,6 +12,9 @@ ENV PATH $GEM_HOME/bin:/usr/lib64/qt4/bin:$PATH
 # don't create ".bundle" in all our apps
 ENV BUNDLE_APP_CONFIG $GEM_HOME
 
+# PATCH Ruby-OpenSSL from https://github.com/ruby/ruby/commit/0d58bb55985e787364b0235e5e69278d0f0ad4b0.patch
+COPY ruby_openssl.diff /
+
 # Prepare system
 # Compile ruby
 #   skip installing gem documentation
@@ -48,7 +51,8 @@ openssl-devel \
 && mkdir -p /usr/local/src/ruby \
 && curl -SL "http://cache.ruby-lang.org/pub/ruby/$RUBY_MAJOR/ruby-$RUBY_VERSION.tar.bz2" | tar -xjC /usr/local/src/ruby --strip-components=1 \
 && cd /usr/local/src/ruby \
-&& curl -fsSL "https://github.com/ruby/ruby/commit/0d58bb55985e787364b0235e5e69278d0f0ad4b0.patch" | patch -p1 -f \
+&& cat /ruby_openssl.diff | patch -p1 \
+&& rm -f /ruby_openssl.diff \
 && autoconf \
 && ./configure --disable-install-doc \
 && make -j"$(nproc)" \
@@ -61,7 +65,7 @@ openssl-devel \
 && cd /usr/local/src/rubygem \
 && ruby setup.rb \
 && cd \
-&& rm -rf /usr/local/src/rubygem
+&& rm -rf /usr/local/src/rubygem \
 && gem install bundler \
 && bundle config --global path "$GEM_HOME" \
 && bundle config --global bin "$GEM_HOME/bin"
