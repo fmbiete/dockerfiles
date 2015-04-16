@@ -11,11 +11,12 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 
-# Install EPEL, tar, gosu
+# Install EPEL, tar, gosu, logrotate
 RUN yum clean all \
 && yum install -y \
 epel-release \
 tar \
+logrotate \
 && yum clean all \
 && gpg --keyserver pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4 \
 && curl -o /usr/local/bin/gosu -SL "https://github.com/tianon/gosu/releases/download/1.2/gosu-amd64" \
