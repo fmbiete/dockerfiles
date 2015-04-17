@@ -3,7 +3,7 @@ MAINTAINER Francisco Miguel Biete <fbiete@gmail.com>
 
 # Define versions
 ENV RUBY_MAJOR 2.2
-ENV RUBY_VERSION 2.2.1
+ENV RUBY_VERSION 2.2.2
 
 # install things globally, for great justice
 ENV GEM_HOME /usr/local/bundle
