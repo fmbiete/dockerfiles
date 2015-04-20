@@ -1,4 +1,4 @@
-FROM fbiete/centos_epel:7
+FROM fbiete/centos_epel:6
 MAINTAINER Francisco Miguel Biete <fbiete@gmail.com>
 
 RUN yum install -y \
