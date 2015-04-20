@@ -1,11 +1,11 @@
-Base: centos_epel:7
+**Base:** centos_epel
 
-Extras:
+**Extras:**
 
     - OpenLDAP Server
 
 
-RUN EXAMPLE:
+**RUN EXAMPLE:**
 
     mkdir -p ~/app/docker/openldap/lib
 
