@@ -9,9 +9,10 @@ ENV TOMCAT_VERSION 7.0.61
 ENV TOMCAT_TGZ_URL https://www.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz
 
 
-RUN curl -SL "$TOMCAT_TGZ_URL" | tar -xz --strip-components=1 \
-&& rm bin/*.bat \
-&& mkdir -p "$CATALINA_HOME"
+RUN mkdir $CATALINA_HOME \
+&& cd $CATALINA_HOME \
+&& curl -SL "$TOMCAT_TGZ_URL" | tar -xz --strip-components=1 \
+&& rm -f bin/*.bat
 
 WORKDIR $CATALINA_HOME
 
