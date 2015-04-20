@@ -7,7 +7,8 @@ openldap-clients \
 && yum clean all \
 && rm -rf /etc/openldap/slapd.d/* \
 && rm -rf /var/lib/ldap/* \
-&& mkdir /mnt/slapcat
+&& mkdir /mnt/slapcat \
+&& ulimit -n 1024
 
 VOLUME ["/etc/openldap/slapd.d", "/var/lib/ldap", "/mnt/slapcat"]
 
