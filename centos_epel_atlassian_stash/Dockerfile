@@ -31,6 +31,7 @@ git \
 && curl -L --silent ${DOWNLOAD_URL_MYSQL_CONNECTOR}${MYSQL_CONNECTOR_VERSION}.tar.gz | tar xz --strip=1 -C "$STASH_INSTALL_DIR/lib" --wildcards --no-anchored '*-bin.jar' \
 && mkdir -p ${STASH_INSTALL_DIR}/conf/Catalina \
 && chmod -R 700 ${STASH_INSTALL_DIR}/conf/Catalina ${STASH_INSTALL_DIR}/logs ${STASH_INSTALL_DIR}/temp ${STASH_INSTALL_DIR}/work \
+&& chown -R root:root ${STASH_INSTALL_DIR} \
 && chown -R ${RUN_USER}:${RUN_GROUP} ${STASH_INSTALL_DIR}/logs ${STASH_INSTALL_DIR}/temp ${STASH_INSTALL_DIR}/work ${STASH_INSTALL_DIR}/conf
 
 USER ${RUN_USER}:${RUN_GROUP}
@@ -39,6 +40,9 @@ VOLUME ["${STASH_HOME}"]
 
 # HTTP Port
 EXPOSE 7990
+
+# SSH Port
+EXPOSE 7999
 
 WORKDIR $STASH_INSTALL_DIR
 
