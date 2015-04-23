@@ -1,5 +1,5 @@
-Base: centos_epel:7
+**Base:** centos_epel:7
 
-Extras:
+**Extras:**
 
-    - OPENJDK 1.7
+    - OpenJDK 1.8
