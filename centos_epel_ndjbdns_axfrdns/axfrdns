@@ -1,0 +1,14 @@
+service axfrdns
+{
+        port                    = 53
+        protocol                = tcp
+        socket_type             = stream
+        bind                    = 0.0.0.0
+        wait                    = no
+        user                    = root
+        server                  = /usr/sbin/axfrdns
+        server_args             = -D -c CONFIGFILE -l LOGFILE
+        disable                 = no
+        flags                   = IPv4
+        type                    = UNLISTED
+}
