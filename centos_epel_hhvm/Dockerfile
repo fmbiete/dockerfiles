@@ -2,7 +2,7 @@ FROM fbiete/centos_epel:7
 MAINTAINER Francisco Miguel Biete <fbiete@gmail.com>
 
 ENV HHVM_BRANCH HHVM-3.6
-ENV HHVM_VERSION HHVM-3.6.1
+ENV HHVM_VERSION HHVM-3.6.2
 
 RUN yum clean all \
 && yum install -y http://rpms.famillecollet.com/enterprise/remi-release-7.rpm \
@@ -18,7 +18,7 @@ git \
 psmisc \
 {binutils,boost,jemalloc}-devel \
 {sqlite,tbb,bzip2,openldap,readline,elfutils-libelf,gmp,lz4,pcre,freetype,fastlz,openssl,ncurses,xz,cyrus-sasl,glibc,inotify-tools}-devel \
-lib{xslt,event,yaml,vpx,png,zip,icu,mcrypt,memcached,cap,dwarf,jpeg-turbo}-devel \
+lib{xslt,event,yaml,vpx,png,zip,icu,mcrypt,memcached,cap,dwarf,jpeg-turbo,tool-ltdl}-devel \
 {unixODBC,expat,mariadb,uw-imap}-devel \
 lib{edit,curl,xml2,xslt}-devel \
 glog-devel \
