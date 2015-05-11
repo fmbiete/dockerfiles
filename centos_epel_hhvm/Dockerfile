@@ -16,15 +16,12 @@ gcc-c++ \
 cmake \
 git \
 psmisc \
-{binutils,boost,jemalloc}-devel \
-{sqlite,tbb,bzip2,openldap,readline,elfutils-libelf,gmp,lz4,pcre,freetype,fastlz,openssl,ncurses,xz,cyrus-sasl,glibc,inotify-tools}-devel \
-lib{xslt,event,yaml,vpx,png,zip,icu,mcrypt,memcached,cap,dwarf,jpeg-turbo,tool-ltdl}-devel \
-{unixODBC,expat,mariadb,uw-imap}-devel \
-lib{edit,curl,xml2,xslt}-devel \
-glog-devel \
-oniguruma-devel \
+bison \
 ocaml \
-&& yum clean all \
+gperf \
+{sqlite,tbb,bzip2,openldap,readline,elfutils-libelf,gmp,lz4,pcre,freetype,fastlz,openssl,ncurses,xz,cyrus-sasl,glibc,inotify-tools}-devel \
+{binutils,boost,jemalloc,unixODBC,expat,mariadb,uw-imap,glog,oniguruma,gd,giflib}-devel \
+lib{xslt,event,yaml,vpx,png,tiff,zip,icu,mcrypt,memcached,cap,dwarf,jpeg-turbo,tool-ltdl,edit,curl,xml2,xslt,c-client,pam}-devel \
 && cd /usr/local/src \
 && git clone https://github.com/facebook/hhvm -b $HHVM_BRANCH hhvm --recursive \
 && cd hhvm \
@@ -44,6 +41,8 @@ cmake \
 git \
 psmisc \
 glibc-headers \
+bison \
+gperf \
 && yum clean all \
 && mkdir /var/run/hhvm /var/log/hhvm /etc/hhvm
 
