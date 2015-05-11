@@ -1,5 +1,5 @@
-Base: centos_epel:7
+**Base:** centos_epel
 
-Extra:
+**Extra:**
 
     - HHVM

@@ -1,8 +1,8 @@
 FROM fbiete/centos_epel:7
 MAINTAINER Francisco Miguel Biete <fbiete@gmail.com>
 
-ENV HHVM_BRANCH HHVM-3.6
-ENV HHVM_VERSION HHVM-3.6.2
+ENV HHVM_BRANCH HHVM-3.7
+ENV HHVM_VERSION HHVM-3.7.0
 
 RUN yum clean all \
 && yum install -y http://rpms.famillecollet.com/enterprise/remi-release-7.rpm \
