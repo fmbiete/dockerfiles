@@ -9,5 +9,5 @@ RUN yum clean all \
 sogo \
 sope49-gdl1-mysql \
 sope49-gdl1-postgresql \
-mysql-lib \
+mysql-libs \
 && yum clean all
