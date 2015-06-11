@@ -8,5 +8,5 @@ RUN yum clean all \
 && yum install -y --enablerepo=rpmforge-extras \
 sogo \
 sope49-gdl1-mysql \
-sope49-gdl1-postgresql
+sope49-gdl1-postgresql \
 && yum clean all
