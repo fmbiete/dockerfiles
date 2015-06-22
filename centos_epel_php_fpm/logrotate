@@ -1,0 +1,7 @@
+/var/log/php-fpm/*log {
+    daily
+    missingok
+    notifempty
+    copytruncate
+    rotate 0
+}

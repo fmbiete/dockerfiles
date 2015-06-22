@@ -9,6 +9,8 @@ php-fpm \
 && sed -i '/^listen/c \
 listen = 0.0.0.0:9000' /etc/php-fpm.d/www.conf
 
+COPY logrotate /etc/logrotate.d/php-fpm
+
 WORKDIR /var/www
 
 EXPOSE 9000
