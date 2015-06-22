@@ -24,7 +24,7 @@ git \
 && cp -r dist/* /var/www/docker-registry-frontend \
 && cd / \
 && rm -rf /docker-registry-frontend-master \
-&& yum -y history undo last
+&& yum -y history undo last \
 && yum clean all
 
 COPY nginx.conf /etc/nginx/nginx.conf
