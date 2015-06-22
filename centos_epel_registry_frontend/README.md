@@ -1,4 +1,4 @@
-**Base:** centos_epel_nginx:1.7
+**Base:** centos_epel_nginx
 
 **Extra:**
 
