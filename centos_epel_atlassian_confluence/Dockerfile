@@ -1,7 +1,7 @@
 FROM fbiete/centos_epel_java:1.8
 MAINTAINER Francisco Miguel Biete <fbiete@gmail.com>
 
-ENV CONFLUENCE_VERSION 5.7.3
+ENV CONFLUENCE_VERSION 5.8.4
 ENV MYSQL_CONNECTOR_VERSION 5.1.35
 
 ENV DOWNLOAD_URL https://downloads.atlassian.com/software/confluence/downloads/atlassian-confluence-
