@@ -19,6 +19,5 @@ make \
 && cd $DISTRIBUTION_DIR \
 && make PREFIX=/go clean binaries
 
-ENTRYPOINT ["registry"]
 
-CMD ["cmd/registry/config.yml"]
+CMD ["registry", "cmd/registry/config.yml"]
