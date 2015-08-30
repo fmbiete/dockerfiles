@@ -23,7 +23,7 @@ ENV RUN_GROUP daemon
 # Install git, download and extract Confluence and create the required directory layout.
 # Try to limit the number of RUN instructions to minimise the number of layers that will need to be created.
 RUN mkdir -p $CONFLUENCE_INSTALL_DIR \
-&& curl -L --silent ${DOWNLOAD_URL}${CONFLUENCE_VERSION}.tar.gz | tar -xz --strip=1 -C "$CONFLUENCE_INSTALL_DIR" \
+&& curl -sSL ${DOWNLOAD_URL}${CONFLUENCE_VERSION}.tar.gz | tar -xz --strip=1 -C "$CONFLUENCE_INSTALL_DIR" \
 && curl -L --silent ${DOWNLOAD_URL_MYSQL_CONNECTOR}${MYSQL_CONNECTOR_VERSION}.tar.gz | tar xz --strip=1 -C "$CONFLUENCE_INSTALL_DIR/lib" --wildcards --no-anchored '*-bin.jar' \
 && mkdir -p ${CONFLUENCE_INSTALL_DIR}/conf/Catalina \
 && chmod -R 700 ${CONFLUENCE_INSTALL_DIR}/conf/Catalina ${CONFLUENCE_INSTALL_DIR}/logs ${CONFLUENCE_INSTALL_DIR}/temp ${CONFLUENCE_INSTALL_DIR}/work \
