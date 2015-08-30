@@ -11,7 +11,7 @@ ENV TOMCAT_TGZ_URL https://www.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/v$TOM
 
 RUN mkdir $CATALINA_HOME \
 && cd $CATALINA_HOME \
-&& curl -SL "$TOMCAT_TGZ_URL" | tar -xz --strip-components=1 \
+&& curl -sSL "$TOMCAT_TGZ_URL" | tar -xz --strip-components=1 \
 && rm -f bin/*.bat
 
 WORKDIR $CATALINA_HOME
