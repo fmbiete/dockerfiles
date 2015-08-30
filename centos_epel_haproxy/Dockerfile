@@ -2,7 +2,7 @@ FROM fbiete/centos_epel:7
 MAINTAINER Francisco Miguel Biete <fbiete@gmail.com>
 
 ENV HAPROXY_MAJOR 1.5
-ENV HAPROXY_VERSION 1.5.12
+ENV HAPROXY_VERSION 1.5.14
 
 RUN yum clean all\
 && yum install -y \
