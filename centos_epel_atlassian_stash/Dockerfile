@@ -1,7 +1,7 @@
 FROM fbiete/centos_epel_java:1.8
 MAINTAINER Francisco Miguel Biete <fbiete@gmail.com>
 
-ENV STASH_VERSION 3.10.2
+ENV STASH_VERSION 3.11.2
 ENV MYSQL_CONNECTOR_VERSION 5.1.35
 
 ENV DOWNLOAD_URL https://downloads.atlassian.com/software/stash/downloads/atlassian-stash-
