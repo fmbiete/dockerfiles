@@ -34,7 +34,7 @@ xz-devel \
 gcc \
 openssl-devel \
 && cd /usr/local/src \
-&& curl -L https://github.com/docker/docker-registry/archive/${DOCKER_REGISTRY_VERSION}.zip -o docker-registry.zip \
+&& curl -sSL https://github.com/docker/docker-registry/archive/${DOCKER_REGISTRY_VERSION}.zip -o docker-registry.zip \
 && unzip docker-registry.zip \
 && rm -f docker-registry.zip \
 && cp docker-registry-${DOCKER_REGISTRY_VERSION}/config/boto.cfg /etc/boto.cfg \
