@@ -1,7 +1,7 @@
 FROM fbiete/centos_epel_java:1.8
 MAINTAINER Francisco Miguel Biete <fbiete@gmail.com>
 
-ENV JIRA_VERSION 6.4.7
+ENV JIRA_VERSION 6.4.11
 ENV MYSQL_CONNECTOR_VERSION 5.1.35
 
 ENV DOWNLOAD_URL https://downloads.atlassian.com/software/jira/downloads/atlassian-jira-
