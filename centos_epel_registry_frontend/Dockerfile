@@ -14,7 +14,7 @@ npm \
 nodejs \
 git \
 && mkdir -p /var/www/docker-registry-frontend \
-&& curl -L https://github.com/kwk/docker-registry-frontend/archive/master.zip -o docker-registry-frontend.zip \
+&& curl -sSL https://github.com/kwk/docker-registry-frontend/archive/master.zip -o docker-registry-frontend.zip \
 && unzip docker-registry-frontend \
 && rm -f docker-registry-frontend.zip \
 && cd /docker-registry-frontend-master \
