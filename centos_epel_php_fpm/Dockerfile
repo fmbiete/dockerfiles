@@ -1,7 +1,7 @@
 FROM fbiete/centos_epel_php:7.0
 MAINTAINER Francisco Miguel Biete <fbiete@gmail.com>
 
-RUN yum install -y --enablerepo=remi-php56 --enablerepo=remi \
+RUN yum install -y --enablerepo=remi-php70 --enablerepo=remi \
 php-fpm \
 && yum clean all \
 && mkdir -p /var/www \
