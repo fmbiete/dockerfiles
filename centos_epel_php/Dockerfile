@@ -3,7 +3,7 @@ MAINTAINER Francisco Miguel Biete <fbiete@gmail.com>
 
 RUN yum install -y \
 http://rpms.famillecollet.com/enterprise/remi-release-7.rpm \
-&& yum install -y --enablerepo=remi-php56 --enablerepo=remi \
+&& yum install -y --enablerepo=remi-php70 --enablerepo=remi \
 php-cli \
 php-gd \
 php-mysql \

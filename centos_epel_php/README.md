@@ -2,4 +2,4 @@ Base: centos_epel:7
 
 Extras:
 
-    - PHP-CLI 5.6 (REMI Version)
+    - PHP-CLI 7.0 (REMI Version)

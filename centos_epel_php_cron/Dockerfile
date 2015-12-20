@@ -1,4 +1,4 @@
-FROM fbiete/centos_epel_php:5.6
+FROM fbiete/centos_epel_php:7.0
 MAINTAINER Francisco Miguel Biete <fbiete@gmail.com>
 
 RUN yum install -y \

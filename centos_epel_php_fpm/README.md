@@ -1,8 +1,8 @@
-Base: centos_epel_php:5.6
+Base: centos_epel_php:7.0
 
 Extras:
 
-    - PHP-FPM 5.6 (REMI Version)
+    - PHP-FPM 7.0 (REMI Version)
 
 
 Expose:
@@ -12,7 +12,7 @@ Expose:
 
 RUN EXAMPLE:
 
-    docker run --name app_php_fpm -p 9000:9000 -d fbiete/centos_epel_php_fpm:5.6
+    docker run --name app_php_fpm -p 9000:9000 -d fbiete/centos_epel_php_fpm:7.0
 
     docker stop app_php_fpm
 
